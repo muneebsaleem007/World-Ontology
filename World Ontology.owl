@@ -1,0 +1,232 @@
+@prefix : <http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4> .
+
+<http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#Originated
+
+:Originated rdf:type owl:ObjectProperty ;
+            
+            rdfs:domain :Origin ;
+            
+            rdfs:range [ rdf:type owl:Restriction ;
+                         owl:onProperty :Originated ;
+                         owl:someValuesFrom :Origin
+                       ] .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#border
+
+:border rdf:type owl:ObjectProperty ;
+        
+        rdfs:domain :Country ;
+        
+        rdfs:range :Country .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#isCapitalof
+
+:isCapitalof rdf:type owl:ObjectProperty ;
+             
+             rdfs:subPropertyOf :isLocatedIn .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#isLocatedIn
+
+:isLocatedIn rdf:type owl:ObjectProperty ;
+             
+             rdfs:domain :City ;
+             
+             rdfs:range :Country .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#ispartof
+
+:ispartof rdf:type owl:ObjectProperty ;
+          
+          rdfs:range :Country ;
+          
+          rdfs:domain :State .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#CityName
+
+:CityName rdf:type owl:DatatypeProperty .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#CountryName
+
+:CountryName rdf:type owl:DatatypeProperty .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#OriginName
+
+:OriginName rdf:type owl:DatatypeProperty .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#StateName
+
+:StateName rdf:type owl:DatatypeProperty .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#population
+
+:population rdf:type owl:DatatypeProperty ;
+            
+            rdfs:domain :Place ;
+            
+            rdfs:range xsd:integer .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#City
+
+:City rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Place .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#Country
+
+:Country rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Place .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#Origin
+
+:Origin rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Place .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#Place
+
+:Place rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#State
+
+:State rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Place ;
+       
+       rdfs:comment """This is the class of all cities
+""" .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#City_Name
+
+:City_Name rdf:type :City ,
+                    owl:NamedIndividual ;
+           
+           :CityName "California"^^xsd:Name ,
+                     "Dubai"^^xsd:Name ,
+                     """New York
+"""^^xsd:Name ;
+           
+           :isLocatedIn :City_Name .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#Country_Name
+
+:Country_Name rdf:type :Country ,
+                       owl:NamedIndividual ;
+              
+              :CountryName "India"^^xsd:Name ,
+                           "UAE"^^xsd:Name ,
+                           "pakistan"^^xsd:Name .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#Orginated
+
+:Orginated rdf:type :Origin ,
+                    owl:NamedIndividual ;
+           
+           :OriginName "America"^^xsd:Name ,
+                       "Europe"^^xsd:Name ,
+                       "Middle East"^^xsd:Name .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#Population
+
+:Population rdf:type :Country ,
+                     owl:NamedIndividual ;
+            
+            :population 6578987 ,
+                        745699
+ .
+
+
+
+###  http://www.semanticweb.org/sami/ontologies/2019/4/untitled-ontology-4#State_Name
+
+:State_Name rdf:type :State ,
+                     owl:NamedIndividual ;
+            
+            :StateName "Las Vegas"^^xsd:Name ,
+                       "Los Angles"^^xsd:Name ,
+                       "Washington DC"^^xsd:Name .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+
